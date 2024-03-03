@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>中二節奏BPM 計算器</title>
+  </head>
+  <body>
+    <div>使用說明： 輸入曲目BPM以及音符時值來計算出間隔值和可不可以擦</div>
+    <div>
+      <label for="bpm">輸入 BPM:</label>
+      <input type="text" id="bpm" />
+    </div>
+    <div>
+      <label for="notes">輸入 Notes:</label>
+      <input type="text" id="notes" />
+    </div>
+    <button onclick="calculateInterval()">計算間隔</button>
+    <p id="result"></p>
+    <p id="status"></p>
+
+    <script>
+      function calculateInterval() {
+        var bpm = parseInt(document.getElementById("bpm").value);
+        var notes = parseInt(document.getElementById("notes").value);
+        var interval = bpm * notes;
+
+        document.getElementById("result").innerHTML = "間隔值: " + interval;
+
+        if (interval >= 3600) {
+          document.getElementById("status").innerHTML = "理論通過";
+        } else if (interval >= 1800) {
+          document.getElementById("status").innerHTML = "可擦";
+        } else {
+          document.getElementById("status").innerHTML = "不可擦";
+        }
+      }
+    </script>
+  </body>
+</html>
